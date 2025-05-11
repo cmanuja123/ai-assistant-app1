@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import SearchStep from './SearchStep';
 import ConsolidateStep from './ConsolidateStep';
 import ResponseStep from './ResponseStep';
-import EditIcon from '@mui/icons-material/Edit';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
-import { Step, mockApiResponse } from '../../utils/processingSteps'; // Mock data
+import { Step, mockApiResponse } from '../../utils/processingSteps';
 
 interface AgenticReasoningProps {
     query: string;
@@ -12,7 +11,7 @@ interface AgenticReasoningProps {
 
 const AgenticReasoning: React.FC<AgenticReasoningProps> = ({ query }) => {
     const [currentStep, setCurrentStep] = useState<Step>(Step.Search);
-    const [searchData, setSearchData] = useState<any>(null); // Define more specific types later
+    const [searchData, setSearchData] = useState<any>(null);
     const [consolidateData, setConsolidateData] = useState<any>(null);
     const [responseData, setResponseData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -20,17 +19,14 @@ const AgenticReasoning: React.FC<AgenticReasoningProps> = ({ query }) => {
     useEffect(() => {
         const processQuery = async () => {
             setIsLoading(true);
-            // Simulate API call for search
             setSearchData(mockApiResponse.search);
             setCurrentStep(Step.Search);
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-            // Simulate API call for consolidate
             setConsolidateData(mockApiResponse.consolidate);
             setCurrentStep(Step.Consolidate);
             await new Promise(resolve => setTimeout(resolve, 1500));
 
-            // Simulate API call for response
             setResponseData(mockApiResponse.response);
             setCurrentStep(Step.Response);
             setIsLoading(false);
@@ -41,48 +37,49 @@ const AgenticReasoning: React.FC<AgenticReasoningProps> = ({ query }) => {
         }
     }, [query]);
 
-    const handleEditQuery = () => {
-        // For simplicity, we refresh the page. A more complex app might reset state.
-        window.location.reload();
-    };
-
     return (
-        <div className="w-full bg-white p-6 rounded-lg shadow-md">
-            <div className="mb-4 p-4 border border-border-color rounded-md bg-gray-50">
-                <p className="text-sm text-text-primary">{query}</p>
-                <button onClick={handleEditQuery} className="text-xs text-primary hover:text-blue-800 mt-1 flex items-center">
-                    <EditIcon fontSize="small" sx={{ mr: 0.5, fontSize: '1rem' }} /> Edit
+        <div className="w-full">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+                <p className="text-gray-700 text-sm">{query}</p>
+                <button className="text-gray-500 hover:text-gray-700 text-sm mt-2 underline">
+                    Edit
                 </button>
             </div>
 
-            <h2 className="text-lg font-semibold text-text-primary mb-3 flex items-center">
-                <AutoAwesomeOutlinedIcon className="text-primary mr-2" fontSize="medium" />
-                Agentic Reasoning
-            </h2>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div className="flex items-center mb-6">
+                    <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center mr-2">
+                        <AutoAwesomeOutlinedIcon className="text-emerald-500 w-4 h-4" />
+                    </div>
+                    <h2 className="text-lg font-medium text-gray-900">Agentic Reasoning</h2>
+                </div>
 
-            {currentStep >= Step.Search && searchData && (
-                <SearchStep
-                    isActive={currentStep === Step.Search}
-                    isCompleted={currentStep > Step.Search}
-                    data={searchData}
-                    isLoading={currentStep === Step.Search && isLoading}
-                    stepNumber={1}
-                />
-            )}
-            {currentStep >= Step.Consolidate && consolidateData && (
-                <ConsolidateStep
-                    isActive={currentStep === Step.Consolidate}
-                    isCompleted={currentStep > Step.Consolidate}
-                    data={consolidateData}
-                    isLoading={currentStep === Step.Consolidate && isLoading}
-                    stepNumber={2}
-                />
-            )}
-            {currentStep === Step.Response && responseData && (
-                <ResponseStep data={responseData} />
-            )}
+                <div className="space-y-6">
+                    {currentStep >= Step.Search && searchData && (
+                        <SearchStep
+                            isActive={currentStep === Step.Search}
+                            isCompleted={currentStep > Step.Search}
+                            data={searchData}
+                            isLoading={currentStep === Step.Search && isLoading}
+                            stepNumber={1}
+                        />
+                    )}
+                    {currentStep >= Step.Consolidate && consolidateData && (
+                        <ConsolidateStep
+                            isActive={currentStep === Step.Consolidate}
+                            isCompleted={currentStep > Step.Consolidate}
+                            data={consolidateData}
+                            isLoading={currentStep === Step.Consolidate && isLoading}
+                            stepNumber={2}
+                        />
+                    )}
+                    {currentStep === Step.Response && responseData && (
+                        <ResponseStep data={responseData} />
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
 
-export default AgenticReasoning; 
+export default AgenticReasoning;

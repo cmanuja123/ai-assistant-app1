@@ -4,32 +4,6 @@ export enum Step {
     Response,
 }
 
-export const mockApiResponse = {
-    search: {
-        title: 'Identify use cases designed to check policy compliance with market regulations',
-        query: 'policy compliance with market regulations',
-        sources: ['PMI Marketplace', 'ideaxyz.com', 'abxyz.com'],
-    },
-    consolidate: {
-        title: 'Consolidate findings',
-        status: 'Summarising Findings...', // Or "Consolidate findings" when not actively typing
-    },
-    response: {
-        title: 'Building a Use Case for Policy Compliance Check',
-        steps: [
-            {
-                title: 'Lorem ipsum dolor sit amet',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            },
-            {
-                title: 'Consectetur adipiscing elit',
-                content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-            },
-        ],
-    },
-};
-
-// Basic types for now, can be expanded
 export interface SearchData {
     title: string;
     query: string;
@@ -44,4 +18,29 @@ export interface ConsolidateData {
 export interface ResponseData {
     title: string;
     steps: { title: string; content: string }[];
-} 
+}
+
+export const mockApiResponse = {
+    search: {
+        title: 'Identify use cases designed to check policy compliance with market regulations',
+        query: 'policy compliance with market regulations',
+        sources: ['PMI Marketplace', 'ideaxyz.com', 'abxyz.com'],
+    },
+    consolidate: {
+        title: 'Consolidate findings',
+        status: 'Summarising Findings...',
+    },
+    response: {
+        title: 'Building a Use Case for Policy Compliance Check',
+        steps: [
+            {
+                title: 'Identify Relevant Policies',
+                content: 'First, gather all internal policies that need to be checked for compliance. This includes company guidelines, procedures, and operational standards.',
+            },
+            {
+                title: 'Map Regulations',
+                content: 'Create a comprehensive list of applicable market regulations and map them to corresponding internal policies.',
+            },
+        ],
+    },
+};
