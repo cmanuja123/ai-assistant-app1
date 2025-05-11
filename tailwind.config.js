@@ -7,17 +7,20 @@ export default {
     theme: {
         extend: {
             colors: {
-                'primary': '#007FFF', // Adjust with the exact blue from the image
-                'secondary': '#F0F4F8', // Adjust with the exact light gray/blue from the image
-                'text-primary': '#1E293B', // Adjust with the exact dark text color
-                'text-secondary': '#64748B', // Adjust with the exact lighter text color
-                'border-color': '#E2E8F0', // Adjust with the exact border color
-                'accent': '#4ADE80', // Green checkmark, adjust as needed
+                'primary': '#2563eb', // Updated blue color
+                'secondary': '#f8fafc',
+                'text-primary': '#1e293b',
+                'text-secondary': '#64748b',
+                'border-color': '#e2e8f0',
+                'accent': '#22c55e', // Green checkmark
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'], // Assuming Inter, adjust if different
+                sans: ['Inter', 'sans-serif'],
+            },
+            borderRadius: {
+                'xl': '1rem',
             },
         },
     },
     plugins: [],
-} 
+}
