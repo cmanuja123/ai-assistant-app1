@@ -39,18 +39,16 @@ const AgenticReasoning: React.FC<AgenticReasoningProps> = ({ query }) => {
 
     return (
         <div className="w-full">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-                <p className="text-gray-700 text-sm">{query}</p>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-4">
+                <p className="text-gray-700">{query}</p>
                 <button className="text-gray-500 hover:text-gray-700 text-sm mt-2 underline">
                     Edit
                 </button>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <div className="flex items-center mb-6">
-                    <div className="w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center mr-2">
-                        <AutoAwesomeOutlinedIcon className="text-emerald-500 w-4 h-4" />
-                    </div>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div className="flex items-center mb-6 gap-2">
+                    <AutoAwesomeOutlinedIcon className="text-emerald-500" />
                     <h2 className="text-lg font-medium text-gray-900">Agentic Reasoning</h2>
                 </div>
 
